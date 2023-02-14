@@ -74,7 +74,6 @@ Matrix<T> Matrix<T>::operator=(const Matrix<T>& second){
 template <typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T>& second){
     if(this->rows!= second.rows || this->cols!= second.cols){
-        //std::cerr<<"Matrix dimensions do not match!"<<std::endl;
         throw std::invalid_argument("Matrix dimensions do not match!");
 
     }
@@ -89,8 +88,7 @@ Matrix<T> Matrix<T>::operator+(const Matrix<T>& second){
 template <typename T>
 Matrix<T> Matrix<T>::operator-(const Matrix<T>& second){
 if(this->rows!= second.rows || this->cols!= second.cols){
-        std::cerr<<"Matrix dimensions do not match!"<<std::endl;
-        //throw std::invalid_argument("Matrix dimensions do not match!");
+        throw std::invalid_argument("Matrix dimensions do not match!");
     }
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
@@ -103,8 +101,7 @@ if(this->rows!= second.rows || this->cols!= second.cols){
 template <typename T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T>& second){
     if(this->rows!= second.cols){
-        std::cerr<<"Matrix dimensions do not match!"<<std::endl;
-        //throw std::invalid_argument("Matrix dimensions do not match!");
+        throw std::invalid_argument("Matrix dimensions do not match!");
     }
     Matrix<T> result(rows, second.cols);
     for(int i = 0; i < rows; i++){
@@ -137,14 +134,4 @@ Matrix<T> Matrix<T>::operator/(const T& value){
     return *this;
 }
 
-//template <typename T>
-//std::ostream& operator<<(std::ostream& os, const Matrix<T>& matrix){
-//    for(int i = 0; i < matrix.rows; i++){
-//        for(int j = 0; j < matrix.cols; j++){
-//            os << matrix.matrix[i][j] << " ";
-//        }
-//        os << std::endl;
-//    }
-//    return os;
-//}
 #endif // MATRIX_HPP
